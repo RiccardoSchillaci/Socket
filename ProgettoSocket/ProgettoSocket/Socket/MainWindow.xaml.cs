@@ -35,7 +35,7 @@ namespace socket
         {
             if(contErrori == 0)
             {
-                IPEndPoint sourceSocket = new IPEndPoint(IPAddress.Parse("10.73.0.31"), 56000);         
+                IPEndPoint sourceSocket = new IPEndPoint(IPAddress.Parse("192.168.1.90"), 56000);         
                 Thread ricezione = new Thread(new ParameterizedThreadStart(SocketReceive));
                 ricezione.Start(sourceSocket);
                 contErrori++;
@@ -46,13 +46,18 @@ namespace socket
 
         private void btnInvia_Click(object sender, RoutedEventArgs e)
         {
-            //aggiungere controlli sul contenuto delle textbox
-            string ipAddress = txtIP.Text;
-            int port = int.Parse(txtPort.Text);
-
-            SocketSend(IPAddress.Parse(ipAddress), port, txtMsg.Text);
-
-
+            //aggiunre controlli sul contenuto delle textbox
+            IPAddress provaip;
+            int provaint;
+            //controllo del input delle textbox
+            if (IPAddress.TryParse(txtIP.Text, out provaip) && int.TryParse(txtPort.Text, out provaint) && provaint > 0 && provaint < 65536)
+            {
+                SocketSend(IPAddress.Parse(txtIP.Text), int.Parse(txtPort.Text), txtMsg.Text);
+            }
+            else
+            {
+                MessageBox.Show("errore nel inserimento dei campi ip-address o della porta");
+            }
         }
 
         public async void SocketReceive(object socksource)
