@@ -7,14 +7,19 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <TextBox x:Name="txtIP" HorizontalAlignment="Left" Height="49" Margin="63,44,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="159"/>
-        <TextBox x:Name="txtPort" HorizontalAlignment="Left" Height="49" Margin="300,44,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="137"/>
-        <Button x:Name="btnCreaSocket" Content="CreaSocket" HorizontalAlignment="Left" Height="49" Margin="531,44,0,0" VerticalAlignment="Top" Width="128" Click="btnCreaSocket_Click"/>
-        <TextBlock HorizontalAlignment="Left" Margin="63,26,0,0" TextWrapping="Wrap" Text="Indirizzo IP" VerticalAlignment="Top"/>
-        <TextBlock HorizontalAlignment="Left" Margin="304,26,0,0" TextWrapping="Wrap" Text="Port" VerticalAlignment="Top"/>
-        <TextBox x:Name="txtMsg" HorizontalAlignment="Left" Height="70" Margin="74,221,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="202"/>
-        <Button x:Name="btnInvia" Content="Invia" HorizontalAlignment="Left" Margin="113,312,0,0" VerticalAlignment="Top" Width="138" Height="58" IsEnabled="False" Click="btnInvia_Click"/>
-        <Label x:Name="lblRicevi" Content="" HorizontalAlignment="Left" Height="137" Margin="455,221,0,0" VerticalAlignment="Top" Width="204"/>
-
+        <TextBox x:Name="txtIP" HorizontalAlignment="Left" Height="49" Margin="25,124,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="159"/>
+        <TextBox x:Name="txtPort" HorizontalAlignment="Left" Height="49" Margin="220,124,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="137"/>
+        <Button x:Name="btnCreaSocket" Content="CreaSocket" HorizontalAlignment="Left" Height="49" Margin="406,77,0,0" VerticalAlignment="Top" Width="128" Click="btnCreaSocket_Click"/>
+        <TextBlock HorizontalAlignment="Left" Margin="25,106,0,0" TextWrapping="Wrap" Text="Indirizzo ip destinatario" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="224,106,0,0" TextWrapping="Wrap" Text="Porta del destinatario" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtMsg" HorizontalAlignment="Left" Height="98" Margin="25,241,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="332"/>
+        <Button x:Name="btnInvia" Content="Invia" HorizontalAlignment="Left" Margin="130,362,0,0" VerticalAlignment="Top" Width="121" Height="46" IsEnabled="False" Click="btnInvia_Click"/>
+        <Label x:Name="lblRicevi" Content="" BorderThickness="1" HorizontalAlignment="Left" Height="98" Margin="432,241,0,0" VerticalAlignment="Top" Width="332"/>
+        <TextBox x:Name="txtIPTuo" HorizontalAlignment="Left" Height="49" Margin="25,39,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="159"/>
+        <TextBox x:Name="txtPortTuo" HorizontalAlignment="Left" Height="49" Margin="220,39,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="137"/>
+        <TextBlock HorizontalAlignment="Left" Margin="25,21,0,0" TextWrapping="Wrap" Text="Il tuo indirizzo ip" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="224,21,0,0" TextWrapping="Wrap" Text="La tua porta" VerticalAlignment="Top"/>
+        <Label Content="Messaggio inviato da te" Margin="25,215,435,178"/>
+        <Label Content="Messaggio ricevuto" Margin="432,215,28,178"/>
     </Grid>
 </Window>

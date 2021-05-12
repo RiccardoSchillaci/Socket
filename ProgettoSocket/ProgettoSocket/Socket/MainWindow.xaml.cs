@@ -25,6 +25,8 @@ namespace socket
     public partial class MainWindow : Window
     {
         int contErrori = 0;
+        IPAddress provaip;
+        int provaint;
 
         public MainWindow()
         {
@@ -33,12 +35,22 @@ namespace socket
 
         private void btnCreaSocket_Click(object sender, RoutedEventArgs e)
         {
+
             if(contErrori == 0)
             {
-                IPEndPoint sourceSocket = new IPEndPoint(IPAddress.Parse("192.168.1.90"), 56000);         
-                Thread ricezione = new Thread(new ParameterizedThreadStart(SocketReceive));
-                ricezione.Start(sourceSocket);
-                contErrori++;
+                if (IPAddress.TryParse(txtIPTuo.Text, out provaip) && int.TryParse(txtPortTuo.Text, out provaint) && provaint > 0 && provaint < 65536)
+                {
+                    IPEndPoint sourceSocket = new IPEndPoint(IPAddress.Parse(txtIPTuo.Text), int.Parse(txtPortTuo.Text));
+                    Thread ricezione = new Thread(new ParameterizedThreadStart(SocketReceive));
+                    ricezione.Start(sourceSocket);
+                    contErrori++;
+                }
+                else
+                {
+                    MessageBox.Show("Riscrivi ip e/o porta tuoi");
+                }
+                
+                
             }
             btnInvia.IsEnabled = true;
 
@@ -47,8 +59,7 @@ namespace socket
         private void btnInvia_Click(object sender, RoutedEventArgs e)
         {
             //aggiunre controlli sul contenuto delle textbox
-            IPAddress provaip;
-            int provaint;
+            
             //controllo del input delle textbox
             if (IPAddress.TryParse(txtIP.Text, out provaip) && int.TryParse(txtPort.Text, out provaint) && provaint > 0 && provaint < 65536)
             {
@@ -56,7 +67,7 @@ namespace socket
             }
             else
             {
-                MessageBox.Show("errore nel inserimento dei campi ip-address o della porta");
+                MessageBox.Show("Riscrivi ip e/o porta del destinatario");
             }
         }
 
