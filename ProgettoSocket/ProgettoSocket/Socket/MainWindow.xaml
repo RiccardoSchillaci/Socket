@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:socket"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="500" Width="800">
     <Grid>
         <TextBox x:Name="txtIP" HorizontalAlignment="Left" Height="49" Margin="25,124,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="159"/>
         <TextBox x:Name="txtPort" HorizontalAlignment="Left" Height="49" Margin="220,124,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="137"/>
@@ -19,7 +19,7 @@
         <TextBox x:Name="txtPortTuo" HorizontalAlignment="Left" Height="49" Margin="220,39,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="137"/>
         <TextBlock HorizontalAlignment="Left" Margin="25,21,0,0" TextWrapping="Wrap" Text="Il tuo indirizzo ip" VerticalAlignment="Top"/>
         <TextBlock HorizontalAlignment="Left" Margin="224,21,0,0" TextWrapping="Wrap" Text="La tua porta" VerticalAlignment="Top"/>
-        <Label Content="Messaggio inviato da te" Margin="25,215,435,178"/>
-        <Label Content="Messaggio ricevuto" Margin="432,215,28,178"/>
+        <Label Content="Messaggio inviato da te" Margin="25,192,435,201"/>
+        <Label Content="Messaggio ricevuto" Margin="432,192,28,201"/>
     </Grid>
 </Window>

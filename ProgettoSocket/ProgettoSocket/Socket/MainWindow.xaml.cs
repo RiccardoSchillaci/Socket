@@ -24,7 +24,7 @@ namespace socket
     /// </summary>
     public partial class MainWindow : Window
     {
-        int contErrori = 0;
+        int contErrori = 0; //variabile per verificare se c'è stato un errore
         IPAddress provaip;
         int provaint;
 
@@ -35,38 +35,40 @@ namespace socket
 
         private void btnCreaSocket_Click(object sender, RoutedEventArgs e)
         {
-
+            //Controllo per verificare che non si creino 2 socket
             if(contErrori == 0)
             {
-                if (IPAddress.TryParse(txtIPTuo.Text, out provaip) && int.TryParse(txtPortTuo.Text, out provaint) && provaint > 0 && provaint < 65536)
+                if (IPAddress.TryParse(txtIPTuo.Text, out provaip) && int.TryParse(txtPortTuo.Text, out provaint) && provaint > 0 && provaint < 65536) //Controlla se riesce a convertire l'ip, e se la porta è compresa tra 0 e 65536
                 {
+                    //inserisce ip e porta nell'interfaccia
                     IPEndPoint sourceSocket = new IPEndPoint(IPAddress.Parse(txtIPTuo.Text), int.Parse(txtPortTuo.Text));
+                    //inizio del thread
                     Thread ricezione = new Thread(new ParameterizedThreadStart(SocketReceive));
                     ricezione.Start(sourceSocket);
                     contErrori++;
                 }
                 else
                 {
+                    //se ip e/o porta del mittente sono errati da questo errore
                     MessageBox.Show("Riscrivi ip e/o porta tuoi");
                 }
                 
                 
             }
-            btnInvia.IsEnabled = true;
+            btnInvia.IsEnabled = true; //abilita il bottone "Invia" nell'interfaccia
 
         }
 
         private void btnInvia_Click(object sender, RoutedEventArgs e)
         {
-            //aggiunre controlli sul contenuto delle textbox
-            
-            //controllo del input delle textbox
+            //Controlla che l'ip e la porta del destinatario siano corretti
             if (IPAddress.TryParse(txtIP.Text, out provaip) && int.TryParse(txtPort.Text, out provaint) && provaint > 0 && provaint < 65536)
             {
                 SocketSend(IPAddress.Parse(txtIP.Text), int.Parse(txtPort.Text), txtMsg.Text);
             }
             else
             {
+                //se ip e/o porta del destinatario sono errati da questo errore
                 MessageBox.Show("Riscrivi ip e/o porta del destinatario");
             }
         }
@@ -79,7 +81,7 @@ namespace socket
 
             t.Bind(ipendp);
 
-            Byte[] bytesRicevuti = new Byte[256];
+            Byte[] bytesRicevuti = new Byte[256]; //Numero massimo di byte per messaggio
 
             string message;
 
